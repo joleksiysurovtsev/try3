@@ -23,7 +23,7 @@ public class Main {
         addLecture("Novaya lekciya");
         System.out.println("");
         getLecture();
-      //  getListLit(1);
+        getListLit(1);
     }
 
 
@@ -38,7 +38,7 @@ public class Main {
 
 
 
-    /*МЕТОДЫ ДЛЯ РАБОТЫ*/
+    /*МЕТОДЫ ДЛЯ РАБОТЫ C МАСИВОМ*/
 
     // Вывод списка лекции
     private static void getLecture() {
@@ -58,10 +58,22 @@ public class Main {
 
     //Добавить новую лекцию в масив
     private static void addLecture(String name) {
-        String[][]  newArray = Arrays.copyOf(lecture,lecture.length+1);
+
+        String[][] newArray = new String[lecture.length + 1][];
+        String[] add = {name};
+
+        for (int i = 0; i < newArray.length-1; i++) {
+            String[] temp = lecture[i];
+            newArray[i] = temp;
+        }
+        newArray[newArray.length-1] = add;
+
         lecture = newArray;
 
-        lecture[lecture.length-1][0] = name;
+        System.out.println(Arrays.toString(lecture));
+
+
+        System.out.println(Arrays.toString(newArray));
 
     }
 
