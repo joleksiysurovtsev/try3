@@ -3,8 +3,6 @@ package com.company;
 /*При наполнении массива учитываем что он двухмерный*/
 
 
-import java.util.Arrays;
-
 public class Main {
     static String[][] lecture = {
             {/*0*/"Java Core", "Head First Java", "Java. Руководство для начинающих"},
@@ -14,15 +12,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the learning management system");
+        //System.out.println("Welcome to the learning management system");
         // write your code here
         // getMainMenu();
 
         getLecture();
 
         addLecture("Novaya lekciya");
-        System.out.println("");
+        addLecture("Yenscho odna lekciya");
+        System.out.println(" ");
         getLecture();
+        System.out.println(" ");
         getListLit(1);
     }
 
@@ -57,25 +57,13 @@ public class Main {
     }
 
     //Добавить новую лекцию в масив
-    private static void addLecture(String name) {
-
+    private static void addLecture(String lectureAddName) {
         String[][] newArray = new String[lecture.length + 1][];
-        String[] add = {name};
+                        // из    начиная с  в новый  начиная с  по предпоследний (последний пустой)
+        System.arraycopy(lecture, 0, newArray, 0, newArray.length - 1);
 
-        for (int i = 0; i < newArray.length-1; i++) {
-            String[] temp = lecture[i];
-            newArray[i] = temp;
-        }
-        newArray[newArray.length-1] = add;
-
+        String[] newLecture = {lectureAddName};
+        newArray[newArray.length - 1] = newLecture;
         lecture = newArray;
-
-        System.out.println(Arrays.toString(lecture));
-
-
-        System.out.println(Arrays.toString(newArray));
-
     }
-
-
 }
