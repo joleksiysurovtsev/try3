@@ -3,6 +3,8 @@ package com.company;
 /*При наполнении массива учитываем что он двухмерный*/
 
 
+import java.util.Arrays;
+
 public class Main {
     static String[][] lecture = {
             {/*0*/"Java Core", "Head First Java", "Java. Руководство для начинающих"},
@@ -23,7 +25,10 @@ public class Main {
         System.out.println(" ");
         getLecture();
         System.out.println(" ");
-        getListLit(1);
+       // getListLit(1);
+        System.out.println(" ");
+        removeLecture(3);
+        getLecture();
     }
 
 
@@ -66,4 +71,17 @@ public class Main {
         newArray[newArray.length - 1] = newLecture;
         lecture = newArray;
     }
+
+    //Удалить лекцию и масива
+    private static void removeLecture(int lectureRemove) {
+        String[][] newArray = new String[lecture.length - 1][];
+        System.arraycopy(lecture, 0, newArray, 0, lectureRemove-1);
+        System.arraycopy(lecture, lectureRemove, newArray, lectureRemove, 2);
+
+        lecture =newArray;
+       // System.out.println(Arrays.toString(newArray));
+    }
+
+
+
 }
